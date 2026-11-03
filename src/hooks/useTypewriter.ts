@@ -6,7 +6,11 @@ export function useTypewriter(words:string[],speed=70,pause=1500) {
   const [text,setText]=useState(()=>reduceMotion()?words[0]:"")
 
   useEffect(()=>{
-    if (reduceMotion()) return
+    if (reduceMotion()) {
+      setText(words[0])
+      return
+    }
+    setText("")
     let w=0
     let i=0
     let deleting=false
