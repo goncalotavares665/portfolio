@@ -65,6 +65,16 @@ h3{font-size:1.25rem;font-weight:500}
   font-size:1.1rem;cursor:pointer;transition:border-color .2s,transform .2s;
 }
 .theme-toggle:hover{border-color:var(--accent);transform:rotate(20deg)}
+.nav-actions{display:flex;align-items:center;gap:.6rem}
+.lang-toggle{
+  display:flex;align-items:center;gap:2px;
+  height:40px;padding:0 4px;border-radius:999px;
+  border:1px solid var(--border);background:transparent;color:var(--text);
+  font:inherit;font-weight:600;font-size:.9rem;cursor:pointer;transition:border-color .2s;
+}
+.lang-toggle:hover{border-color:var(--accent)}
+.lang-toggle span{padding:.3rem .6rem;border-radius:999px;color:var(--muted);transition:background .2s,color .2s}
+.lang-toggle span.on{background:var(--accent);color:var(--on-accent)}
 .progress{height:2px;width:var(--progress,0%);background:var(--accent)}
 
 /* ---------- hero ---------- */

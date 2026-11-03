@@ -1,8 +1,10 @@
 import { useState } from "react"
 import type { FormEvent } from "react"
 import { profile } from "../data/profile"
+import { useLang } from "../i18n/LanguageContext"
 
 export default function Contact() {
+  const { t } = useLang()
   const [copied,setCopied]=useState(false)
 
   const copy=async()=>{
@@ -16,7 +18,7 @@ export default function Contact() {
   const send=(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
     const data=new FormData(e.currentTarget)
-    const subject=encodeURIComponent(`Contacto pelo portfolio: ${data.get("name")}`)
+    const subject=encodeURIComponent(`${t.contact.subject}: ${data.get("name")}`)
     const body=encodeURIComponent(String(data.get("message")))
     window.location.href=`mailto:${profile.email}?subject=${subject}&body=${body}`
   }
@@ -25,10 +27,10 @@ export default function Contact() {
     <section id="contact" className="section">
       <div className="container contact">
         <div>
-          <h2>Contacto</h2>
-          <p className="prose">Tens um projeto, uma oportunidade ou só uma pergunta? Envia-me uma mensagem.</p>
+          <h2>{t.contact.subject}</h2>
+          <p className="prose">{t.contact.intro}</p>
           <button className="btn" onClick={copy}>
-            {copied?"Email copiado":profile.email}
+            {copied?t.contact.copied:profile.email}
           </button>
           <p className="social">
             <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
@@ -37,14 +39,14 @@ export default function Contact() {
         </div>
         <form onSubmit={send} className="form">
           <label>
-            Nome
+            {t.contact.name}
             <input name="name" required autoComplete="name" />
           </label>
           <label>
-            Mensagem
+            {t.contact.message}
             <textarea name="message" rows={5} required />
           </label>
-          <button className="btn primary" type="submit">Enviar mensagem</button>
+          <button className="btn primary" type="submit">{t.contact.send}</button>
         </form>
       </div>
     </section>
