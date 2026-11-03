@@ -1,0 +1,15 @@
+# variáveis de ambiente (podem conter chaves e passwords)
+.env
+.env.*
+
+# logs
+*.log
+
+# sistema e editor
+.DS_Store
+Thumbs.db
+.idea
+.vscode
+
+node_modules
+dist
